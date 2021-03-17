@@ -1,10 +1,13 @@
 import React from "react";
 import "./TrackList.css";
+import Track from "../Track/Track";
 
-export default function TrackList() {
+export default function TrackList({ tracks }) {
   return (
-    <div class="TrackList">
-      {/* <!-- You will add a map method that renders a set of Track components  --> */}
+    <div className="TrackList">
+      {tracks.map((track) => (
+        <Track key={track.id} track={track} />
+      ))}
     </div>
   );
 }

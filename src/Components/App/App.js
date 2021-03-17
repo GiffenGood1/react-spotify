@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Playlist from "../Playlist/Playlist";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import "./App.css";
 
-export default function App() {
+export default function App(props) {
+  const [searchResults, setSearchResults] = useState([
+    {
+      name: "Tiny Dancer",
+      artist: "Elton John",
+      album: "Madman Across The Water",
+      id: 1,
+    },
+    {
+      name: "Bohemian Rhapsody",
+      artist: "Queen",
+      album: "Best of Queen",
+      id: 2,
+    },
+  ]);
+
+  const [playlist, setPlaylist] = useState([
+    {
+      name: "Tiny Dancer",
+      artist: "Elton John",
+      album: "Madman Across The Water",
+      id: 1,
+    },
+    {
+      name: "Bohemian Rhapsody",
+      artist: "Queen",
+      album: "Best of Queen",
+      id: 2,
+    },
+  ]);
   return (
     <div>
       <h1>
@@ -13,8 +42,8 @@ export default function App() {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults />
-          <Playlist />
+          <SearchResults searchResults={searchResults} />
+          <Playlist playlist={playlist} />
         </div>
       </div>
     </div>
