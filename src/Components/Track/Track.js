@@ -1,7 +1,16 @@
 import React from "react";
 import "./Track.css";
 
-export default function Track({ track }) {
+export default function Track({ track, onAdd, isRemoval, onRemove }) {
+  const addTrack = () => {
+    onAdd(track);
+    console.log(onAdd);
+  };
+
+  const removeTrack = () => {
+    onRemove(track);
+  };
+
   return (
     <div className="Track">
       <div className="Track-information">
@@ -10,7 +19,15 @@ export default function Track({ track }) {
           {track.artist} | {track.album}
         </p>
       </div>
-      <button className="Track-action"> + or - will go here </button>
+      {isRemoval ? (
+        <button className="Track-action" onClick={removeTrack}>
+          -
+        </button>
+      ) : (
+        <button className="Track-action" onClick={addTrack}>
+          +
+        </button>
+      )}
     </div>
   );
 }
