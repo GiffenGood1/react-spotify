@@ -8,6 +8,9 @@ export default function SearchBar({ onSearch }) {
   };
 
   const handleClick = (e) => {
+    if (term === "") {
+      return;
+    }
     onSearch(term);
   };
   return (

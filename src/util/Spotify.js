@@ -54,7 +54,7 @@ const Spotify = {
       return;
     }
 
-    const accessToken = Spotify.getAccessToken;
+    const accessToken = Spotify.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
 
@@ -79,7 +79,7 @@ const Spotify = {
 
     const playlistId = jsonRes1.id;
 
-    const res2 = await fetch(
+    await fetch(
       `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
       {
         headers: headers,

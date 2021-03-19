@@ -4,7 +4,6 @@ import "./Track.css";
 export default function Track({ track, onAdd, isRemoval, onRemove }) {
   const addTrack = () => {
     onAdd(track);
-    console.log(onAdd);
   };
 
   const removeTrack = () => {

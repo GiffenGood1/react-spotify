@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Playlist from "../Playlist/Playlist";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
@@ -6,11 +6,17 @@ import Spotify from "../../util/Spotify";
 import "./App.css";
 
 export default function App(props) {
+  // State
   const [searchResults, setSearchResults] = useState([]);
 
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const [playlistName, setPlaylistName] = useState("My New Playlist");
+
+  // Get access token on load
+  useEffect(() => {
+    Spotify.getAccessToken();
+  }, []);
 
   const addTrack = (track) => {
     if (playlistTracks.find((playlistTrack) => track.id === playlistTrack.id)) {
@@ -32,7 +38,7 @@ export default function App(props) {
 
   const savePlaylist = async () => {
     const trackUris = playlistTracks.map((track) => track.uri);
-    const resJson = await Spotify.savePlaylist(playlistName, trackUris);
+    await Spotify.savePlaylist(playlistName, trackUris);
     setPlaylistName("My New Playlist");
     setPlaylistTracks([]);
   };
