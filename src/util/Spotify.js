@@ -1,5 +1,5 @@
 const clientId = process.env.REACT_APP_API_KEY;
-const redirectUri = "http://localhost:3000";
+const redirectUri = "https://react-spotify-playlist-maker.herokuapp.com/";
 let accessToken;
 
 const Spotify = {
